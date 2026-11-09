@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mini CRM</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="eyebrow">TUS CONTACTOS, EN UN SOLO LUGAR</p>
+      <h1>Mini CRM</h1>
+      <p>Añade leads y consulta tu lista de contactos.</p>
+    </header>
+
+    <section class="card" aria-labelledby="form-title">
+      <h2 id="form-title">Nuevo lead</h2>
+      <form id="lead-form">
+        <div class="field">
+          <label for="name">Nombre</label>
+          <input id="name" name="name" type="text" autocomplete="name" placeholder="Ana García" required>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" placeholder="ana@ejemplo.com" required>
+        </div>
+        <div class="field">
+          <label for="source">Fuente</label>
+          <input id="source" name="source" type="text" placeholder="Web, redes sociales, recomendación…">
+        </div>
+        <div class="field">
+          <label for="status">Estado</label>
+          <select id="status" name="status">
+            <option value="nuevo">Nuevo</option>
+            <option value="contactado">Contactado</option>
+            <option value="perdido">Perdido</option>
+          </select>
+        </div>
+        <button id="submit-button" type="submit">Añadir lead</button>
+        <button id="cancel-button" class="secondary" type="button" hidden>Cancelar edición</button>
+      </form>
+      <p id="message" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="card" aria-labelledby="list-title">
+      <div class="list-header">
+        <h2 id="list-title">Leads <span id="lead-count" aria-live="polite">0 visibles</span></h2>
+        <div class="list-actions">
+          <button id="refresh-button" class="secondary" type="button">Actualizar</button>
+          <!-- El navegador descarga el CSV directamente desde el backend. -->
+          <form action="/leads/export" method="get">
+            <button class="secondary" type="submit">Exportar todos a CSV</button>
+          </form>
+        </div>
+      </div>
+      <div class="lead-filters">
+        <div class="field">
+          <label for="lead-search">Buscar por nombre o email</label>
+          <input id="lead-search" type="search" placeholder="Nombre o email…">
+        </div>
+        <div class="field">
+          <label for="status-filter">Filtrar por estado</label>
+          <select id="status-filter">
+            <option value="">Todos</option>
+            <option value="nuevo">Nuevo</option>
+            <option value="contactado">Contactado</option>
+            <option value="perdido">Perdido</option>
+          </select>
+        </div>
+      </div>
+      <p id="list-status" role="status">Cargando leads…</p>
+      <div class="table-container">
+        <table>
+          <thead><tr><th scope="col">Nombre</th><th scope="col">Email</th><th scope="col">Fuente</th><th scope="col">Estado</th><th scope="col">Acciones</th></tr></thead>
+          <tbody id="leads-body"></tbody>
+        </table>
+      </div>
+    </section>
+    <p class="footnote">Los datos se guardan temporalmente y se borran al reiniciar el servidor.</p>
+  </main>
+</body>
+</html>

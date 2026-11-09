@@ -1,0 +1,46 @@
+:root { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #203047; background: #f3f6fa; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+main { width: min(920px, 100%); margin: 0 auto; padding: 52px 24px; }
+header { margin-bottom: 30px; }
+.eyebrow { color: #3964a3; font-size: 12px; font-weight: 700; letter-spacing: .12em; }
+h1 { font-size: clamp(32px, 5vw, 44px); letter-spacing: -.04em; margin: 8px 0; }
+header > p:last-child, .footnote { color: #627086; }
+.card { background: white; border: 1px solid #dde4ee; border-radius: 14px; padding: 26px; margin-bottom: 22px; box-shadow: 0 4px 18px #20304705; }
+h2 { font-size: 19px; margin: 0 0 22px; }
+form { display: flex; gap: 16px; align-items: flex-end; flex-wrap: wrap; }
+.field { flex: 1 1 220px; }
+label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px; }
+input, select { width: 100%; padding: 12px; border: 1px solid #bac6d6; border-radius: 7px; font: inherit; }
+button { padding: 13px 20px; border: 1px solid transparent; border-radius: 7px; background: #285bc5; color: white; font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; }
+button:hover { background: #204ba5; }
+button:disabled { cursor: wait; opacity: .65; }
+input:focus-visible, select:focus-visible, button:focus-visible { outline: 3px solid #91b3f6; outline-offset: 3px; }
+.secondary { color: #285bc5; background: #eef3fd; }
+.secondary:hover { background: #e0eaff; }
+.row-actions { display: flex; gap: 8px; }
+.row-actions button { padding: 8px 12px; }
+.danger { color: #af2639; background: #fceef0; }
+.danger:hover { background: #f8dce1; }
+.list-header { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 18px; }
+.list-header h2 { margin: 0; }
+.list-header { flex-wrap: wrap; }
+.list-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.lead-filters { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 18px; }
+.lead-filters .field:first-child { flex-grow: 2; }
+#lead-count { margin-left: 6px; background: #eef3fd; color: #285bc5; border-radius: 20px; padding: 3px 9px; font-size: 13px; }
+.table-container { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; text-align: left; }
+th { color: #627086; font-size: 13px; background: #f7f9fc; }
+th, td { padding: 14px; border-bottom: 1px solid #e6ebf2; overflow-wrap: anywhere; }
+td { font-size: 14px; }
+.status-badge { display: inline-block; padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; line-height: 1.4; white-space: nowrap; color: #526174; background: #eef1f5; }
+.status-badge--nuevo { color: #285bc5; background: #eef3fd; }
+.status-badge--contactado { color: #237344; background: #eaf6ee; }
+.status-badge--perdido { color: #af2639; background: #fceef0; }
+#message { margin: 16px 0 0; color: #237344; font-size: 14px; }
+#message:empty { display: none; }
+#message.error, #list-status.error { color: #af2639; }
+#list-status { color: #627086; font-size: 14px; }
+.footnote { font-size: 12px; text-align: center; line-height: 1.6; }
+@media (max-width: 540px) { main { padding: 28px 16px; } .card { padding: 20px; } form button { width: 100%; } }
