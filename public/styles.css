@@ -28,6 +28,11 @@ input:focus-visible, select:focus-visible, button:focus-visible { outline: 3px s
 .list-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
 .lead-filters { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 18px; }
 .lead-filters .field:first-child { flex-grow: 2; }
+.lead-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin: 0 0 22px; }
+.lead-stats > div { padding: 16px; background: #f7f9fc; border: 1px solid #dde4ee; border-radius: 7px; }
+.lead-stats dt { color: #627086; font-size: 13px; }
+.lead-stats dd { margin: 6px 0 0; font-size: 26px; font-weight: 700; }
+@media (max-width: 540px) { .lead-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 #lead-count { margin-left: 6px; background: #eef3fd; color: #285bc5; border-radius: 20px; padding: 3px 9px; font-size: 13px; }
 .table-container { overflow-x: auto; }
 table { width: 100%; border-collapse: collapse; text-align: left; }

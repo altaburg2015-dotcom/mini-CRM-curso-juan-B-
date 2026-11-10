@@ -9,6 +9,10 @@ const cancelButton = document.querySelector('#cancel-button');
 const formTitle = document.querySelector('#form-title');
 const searchInput = document.querySelector('#lead-search');
 const statusFilter = document.querySelector('#status-filter');
+const statsTotal = document.querySelector('#stats-total');
+const statsNew = document.querySelector('#stats-new');
+const statsContacted = document.querySelector('#stats-contacted');
+const statsLost = document.querySelector('#stats-lost');
 let allLeads = [];
 let editingId = null;
 let busy = false;
@@ -62,6 +66,19 @@ async function deleteLead(lead) {
   } finally {
     setBusy(false);
   }
+}
+
+function showStats() {
+  const totals = { new: 0, contacted: 0, lost: 0 };
+  const states = { nuevo: 'new', contactado: 'contacted', perdido: 'lost', new: 'new', contacted: 'contacted', lost: 'lost' };
+  for (const lead of allLeads) {
+    const status = states[lead.status || 'nuevo'];
+    if (Object.hasOwn(totals, status)) totals[status] += 1;
+  }
+  statsTotal.textContent = allLeads.length;
+  statsNew.textContent = totals.new;
+  statsContacted.textContent = totals.contacted;
+  statsLost.textContent = totals.lost;
 }
 
 function showLeads() {
@@ -123,6 +140,7 @@ async function loadLeads() {
     const response = await fetch('/leads');
     if (!response.ok) throw new Error('No se han podido cargar los leads. Pulsa Actualizar para reintentar.');
     allLeads = await response.json();
+    showStats();
     showLeads();
   } catch (error) {
     listStatus.className = 'error';
